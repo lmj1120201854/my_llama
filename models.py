@@ -169,7 +169,7 @@ class Transformer(PreTrainedModel):
                 logits.view(-1, logits.shape[-1]), 
                 targets.view(-1),
                 ignore_index=0, # 忽略0号token，通常是padding
-                reduce="none")
+                reduction="none")
         else:
             # 推理阶段使用，只需要预测最后一个词的输出，也就是下一个词的logit
             logits = self.output_layer(h[:, [-1], :])
